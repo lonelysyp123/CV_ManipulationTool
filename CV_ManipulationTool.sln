@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32630.192
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CV_ManipulationTool", "CV_ManipulationTool\CV_ManipulationTool.csproj", "{4A57370E-AFF1-49E9-B08E-70DF9F6161D2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4A57370E-AFF1-49E9-B08E-70DF9F6161D2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4A57370E-AFF1-49E9-B08E-70DF9F6161D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4A57370E-AFF1-49E9-B08E-70DF9F6161D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4A57370E-AFF1-49E9-B08E-70DF9F6161D2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1D82A163-911D-4EC1-B98F-881937EEFCA4}
+	EndGlobalSection
+EndGlobal

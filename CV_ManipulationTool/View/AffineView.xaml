@@ -1,0 +1,124 @@
+﻿<Window x:Class="CV_ManipulationTool.View.AffineView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+        xmlns:local="clr-namespace:CV_ManipulationTool.View"
+        mc:Ignorable="d"
+        Title="Affine" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2.5*"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <Grid Name="ImageG" Grid.Column="0" Grid.Row="0">
+            <Border Name="BtnBo" HorizontalAlignment="Left" Width="15" Height="100" BorderThickness="0" Background="#7FBEF0F6" MouseEnter="HideMenu_MouseEnter">
+                <Image Source="../Resource/Image/menu0.png" Height="50"></Image>
+            </Border>
+
+            <Border Name="HideMenu" Background="#7FBEF0F6" MouseLeave="HideMenu_MouseLeave" Width="100" HorizontalAlignment="Left" Margin="-100 0 0 0">
+                <ListBox Background="{x:Null}" ItemsSource="{Binding ImageList}" SelectedItem="{Binding ImageSelected}" BorderThickness="0" SelectedIndex="{Binding ImageIndex}">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="{Binding Image}" Width="35"></Image>
+                                <Label Content="{Binding Tag}" FontSize="10" HorizontalAlignment="Center" VerticalAlignment="Center"></Label>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </Border>
+
+            <Image Source="{Binding ImageSource}" Margin="5"></Image>
+
+            <Border Background="#66EDF1CC" Width="80" HorizontalAlignment="Right">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Label Grid.Row="0" Content="图像信息" VerticalAlignment="Top" HorizontalAlignment="Center"></Label>
+                    <TextBlock Grid.Row="1" Text="{Binding SrcImage.Rows}" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+                    <TextBlock Grid.Row="2" Text="{Binding SrcImage.Cols}" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+                </Grid>
+            </Border>
+        </Grid>
+
+        <GroupBox Header="Log" Grid.Column="0" Grid.Row="1" Margin="5">
+            <ScrollViewer>
+                <TextBlock Name="LogContent" Text="{Binding LogContent}" ScrollViewer.CanContentScroll="True"></TextBlock>
+            </ScrollViewer>
+        </GroupBox>
+
+        <Grid Grid.Row="0" Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            
+            <Button Grid.Column="0" Grid.Row="0" Margin="5" Content="清空图像" Command="{Binding ClearImageCommand}"></Button>
+            <Button Grid.Column="1" Grid.Row="0" Margin="5" Content="加载图像" Command="{Binding LoadImageCommand}"></Button>
+
+            <Button Grid.Column="0" Grid.Row="1" Margin="5" Content="平移" Command="{Binding TranslationCommand}"></Button>
+            <Button Grid.Column="0" Grid.Row="2" Margin="5" Content="旋转" Command="{Binding RotateCommand}"></Button>
+            <Button Grid.Column="0" Grid.Row="3" Margin="5" Content="放大" Command="{Binding BiggerCommand}"></Button>
+            <Button Grid.Column="0" Grid.Row="4" Margin="5" Content="缩小" Command="{Binding SmallerCommand}"></Button>
+
+            <Grid Grid.Column="1" Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Label Grid.Column="0" Grid.Row="0" Content="垂直"></Label>
+                <TextBox Grid.Column="1" Grid.Row="0" Margin="1" Text="{Binding Vertical}" InputScope="Number"></TextBox>
+                <Label Grid.Column="0" Grid.Row="1" Content="水平"></Label>
+                <TextBox Grid.Column="1" Grid.Row="1" Margin="1" Text="{Binding Horizontal}" InputScope="Number"></TextBox>
+            </Grid>
+
+            <Grid Grid.Column="1" Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Label Grid.Column="0" Grid.Row="0" Content="角度" HorizontalAlignment="Center" VerticalAlignment="Center"></Label>
+                <TextBox Grid.Column="1" Grid.Row="0" Margin="1 15 1 15" Text="{Binding Angle}" InputScope="Number"></TextBox>
+            </Grid>
+
+            <Grid Grid.Column="1" Grid.Row="3">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Label Grid.Column="0" Grid.Row="0" Content="倍数" HorizontalAlignment="Center" VerticalAlignment="Center"></Label>
+                <TextBox Grid.Column="1" Grid.Row="0" Margin="1 15 1 15" Text="{Binding BigTimes}" InputScope="Number"></TextBox>
+            </Grid>
+
+            <Grid Grid.Column="1" Grid.Row="4">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Label Grid.Column="0" Grid.Row="0" Content="倍数" HorizontalAlignment="Center" VerticalAlignment="Center"></Label>
+                <TextBox Grid.Column="1" Grid.Row="0" Margin="1 15 1 15" Text="{Binding SmalleTimes}" InputScope="Number"></TextBox>
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>

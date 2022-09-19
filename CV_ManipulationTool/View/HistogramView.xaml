@@ -1,0 +1,43 @@
+﻿<Window x:Class="CV_ManipulationTool.View.HistogramView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:oxy="http://oxyplot.org/wpf"
+        xmlns:local="clr-namespace:CV_ManipulationTool.View"
+        mc:Ignorable="d"
+        Title="HistogramView" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2.5*"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" Name="Complex">
+            <Image Name="Map" Source="{Binding ImageSource}" Margin="5" MouseLeftButtonDown="Map_MouseLeftButtonDown" MouseMove="Map_MouseMove" MouseRightButtonDown="Map_MouseRightButtonDown"></Image>
+            <Rectangle Name="ROI" StrokeThickness="3" Stroke="Red" HorizontalAlignment="Left" VerticalAlignment="Top" MouseLeftButtonUp="ROI_MouseLeftButtonUp"></Rectangle>
+        </Grid>
+        <Grid Grid.Row="0" Grid.Column="1" Name="Simple" PreviewMouseLeftButtonDown="Simple_PreviewMouseLeftButtonDown">
+            <oxy:PlotView Name="Chart" Model="{Binding LinePlotModel}"></oxy:PlotView>
+        </Grid>
+        <Grid Grid.Row="1" Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Button Grid.Row="0" Grid.Column="0" Content="加载图像" Command="{Binding LoadImageCommand}" Margin="5"></Button>
+            <ToggleButton Name="ROIBtn" Grid.Row="0" Grid.Column="1" Content="ROI" Margin="5"></ToggleButton>
+        </Grid>
+    </Grid>
+</Window>

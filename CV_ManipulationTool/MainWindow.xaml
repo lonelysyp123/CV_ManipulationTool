@@ -15,7 +15,6 @@
             <ColumnDefinition/>
             <ColumnDefinition/>
             <ColumnDefinition/>
-            <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
         <Grid Grid.Column="0">
@@ -28,14 +27,126 @@
                 <RowDefinition/>
                 <RowDefinition/>
                 <RowDefinition/>
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Row="0" Text="图像处理" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="18"></TextBlock>
+            <Button Grid.Row="1" Margin="7" Content="直方图" Command="{Binding HistogramCommand}"></Button>
+            <Button Grid.Row="2" Margin="7" Content="颜色提取" Command=""></Button>
+            <Button Grid.Row="3" Margin="7" Content="图像差" Command=""></Button>
+            <Button Grid.Row="4" Margin="7" Content="图像拼接" Command=""></Button>
+            <Button Grid.Row="5" Margin="7" Content="Demo" Command="{Binding DemoCommand}"></Button>
+        </Grid>
+
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-
-            <TextBlock Grid.Row="0" Text="图像处理" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="18"></TextBlock>
-            <Button Grid.Row="1" Margin="7" Content="仿射变换" Command="{Binding AffineCommand}"></Button>
-            <Button Grid.Row="2" Margin="7" Content="直方图" Command="{Binding HistogramCommand}"></Button>
-            <Button Grid.Row="3" Margin="7" Content="透射变换" Command="{Binding HistogramCommand}"></Button>
+            <TextBlock Grid.Row="0" Text="预处理" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="18"></TextBlock>
+            <Button Grid.Row="1" Margin="7" Content="均衡化" Command=""></Button>
+            <Button Grid.Row="2" Margin="7" Content="阈值处理" Command=""></Button>
+            <Button Grid.Row="3" Margin="7" Content="滤波" Command=""></Button>
+            <Button Grid.Row="4" Margin="7" Content="形态学运算" Command=""></Button>
+            <Button Grid.Row="5" Margin="7" Content="ROI" Command=""></Button>
         </Grid>
-        
+
+        <Grid Grid.Column="2">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Row="0" Text="检测" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="18"></TextBlock>
+            <Button Grid.Row="1" Margin="7" Content="角点检测" Command=""></Button>
+            <Button Grid.Row="2" Margin="7" Content="边缘检测" Command="{Binding SobelCommand}"></Button>
+            <Button Grid.Row="3" Margin="7" Content="霍夫变化" Command=""></Button>
+            <Button Grid.Row="4" Margin="7" Content="轮廓" Command=""></Button>
+            <Button Grid.Row="5" Margin="7" Content="特征点匹配" Command=""></Button>
+            <Button Grid.Row="6" Margin="7" Content="Blob特征" Command=""></Button>
+            <Button Grid.Row="7" Margin="7" Content="凸包检测" Command=""></Button>
+        </Grid>
+
+        <Grid Grid.Column="3">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Row="0" Text="定位" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="18"></TextBlock>
+            <Button Grid.Row="1" Margin="7" Content="找圆" Command=""></Button>
+            <Button Grid.Row="2" Margin="7" Content="模板匹配" Command=""></Button>
+            <Button Grid.Row="3" Margin="7" Content="拟合圆" Command=""></Button>
+            <Button Grid.Row="4" Margin="7" Content="分水岭" Command=""></Button>
+        </Grid>
+
+        <Grid Grid.Column="4">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Row="0" Text="图像变换" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="18"></TextBlock>
+            <Button Grid.Row="1" Margin="7" Content="金字塔" Command=""></Button>
+            <Button Grid.Row="2" Margin="7" Content="仿射变换" Command="{Binding AffineCommand}"></Button>
+            <Button Grid.Row="3" Margin="7" Content="投射变换" Command=""></Button>
+            <Button Grid.Row="4" Margin="7" Content="傅里叶变换" Command=""></Button>
+            <Button Grid.Row="5" Margin="7" Content="漫水填充" Command=""></Button>
+            <Button Grid.Row="6" Margin="7" Content="重映射" Command=""></Button>
+            <Button Grid.Row="7" Margin="7" Content="反向投影" Command=""></Button>
+        </Grid>
+
+        <Grid Grid.Column="5">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Row="0" Text="标定" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="18"></TextBlock>
+            <Button Grid.Row="1" Margin="7" Content="角点检测" Command=""></Button>
+            <Button Grid.Row="2" Margin="7" Content="边缘检测" Command=""></Button>
+            <Button Grid.Row="3" Margin="7" Content="霍夫变化" Command=""></Button>
+        </Grid>
+
+        <Grid Grid.Column="6">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Row="0" Text="标定" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="18"></TextBlock>
+            <Button Grid.Row="1" Margin="7" Content="角点检测" Command=""></Button>
+            <Button Grid.Row="2" Margin="7" Content="边缘检测" Command=""></Button>
+            <Button Grid.Row="3" Margin="7" Content="霍夫变化" Command=""></Button>
+        </Grid>
     </Grid>
 </Window>

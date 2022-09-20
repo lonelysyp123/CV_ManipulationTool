@@ -190,7 +190,7 @@ namespace CV_ManipulationTool.ViewModel
                     ImageSource = bitmapSource;
                     ImageIndex = ImageList.Count - 1;
 
-                    DeleteObject(hBitmap);
+                    GDIHelper.DeleteObject(hBitmap);
 
                     SrcImage = warp_rotate_dst;
                     Reecord("仿射变换_缩小");
@@ -231,7 +231,7 @@ namespace CV_ManipulationTool.ViewModel
                     ImageSource = bitmapSource;
                     ImageIndex = ImageList.Count - 1;
 
-                    DeleteObject(hBitmap);
+                    GDIHelper.DeleteObject(hBitmap);
 
                     SrcImage = warp_rotate_dst;
                     Reecord("仿射变换_放大");
@@ -273,7 +273,7 @@ namespace CV_ManipulationTool.ViewModel
                 ImageSource = bitmapSource;
                 ImageIndex = ImageList.Count - 1;
 
-                DeleteObject(hBitmap);
+                GDIHelper.DeleteObject(hBitmap);
 
                 SrcImage = warp_rotate_dst;
                 Reecord("仿射变换_旋转");
@@ -312,7 +312,7 @@ namespace CV_ManipulationTool.ViewModel
                 ImageSource = bitmapSource;
                 ImageIndex = ImageList.Count - 1;
 
-                DeleteObject(hBitmap);
+                GDIHelper.DeleteObject(hBitmap);
 
                 SrcImage = warp_dst;
                 Reecord("仿射变换_平移");
@@ -369,9 +369,5 @@ namespace CV_ManipulationTool.ViewModel
             string log = DateTime.Now.ToString("hh:mm:ff") + "\t" + content + "\n";
             LogContent += log;
         }
-
-
-        [DllImport("gdi32")]
-        static extern int DeleteObject(IntPtr o);
     }
 }

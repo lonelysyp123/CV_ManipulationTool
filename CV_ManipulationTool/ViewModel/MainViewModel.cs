@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CV_ManipulationTool.View;
 using Microsoft.Toolkit.Mvvm.ComponentModel;
 using Microsoft.Toolkit.Mvvm.Input;
+using Microsoft.Win32;
 
 namespace CV_ManipulationTool.ViewModel
 {
@@ -13,11 +15,48 @@ namespace CV_ManipulationTool.ViewModel
     {
         public RelayCommand AffineCommand { get; set; }
         public RelayCommand HistogramCommand { get; set; }
+        public RelayCommand DemoCommand { get; set; }
+        public RelayCommand SobelCommand { get; set; }
 
         public MainViewModel()
         {
             AffineCommand = new RelayCommand(AffineFunc);
             HistogramCommand = new RelayCommand(Histogram);
+            DemoCommand = new RelayCommand(Demo);
+            SobelCommand = new RelayCommand(Sobel);
+        }
+
+        private void Sobel()
+        {
+            SobelView view = new SobelView();
+            view.ShowDialog();
+        }
+
+        private void Demo()
+        {
+            OpenFileDialog file = new OpenFileDialog();
+            file.ShowDialog();
+            if (file.FileName != null && file.FileName != "")
+            {
+                //BitmapImage bi = new BitmapImage();
+                //bi.BeginInit();
+                //bi.UriSource = new Uri(file.FileName, UriKind.Absolute);
+                //bi.EndInit();
+
+                //ImageSource = bi;
+                //Bitmap bitmap;
+                //using (System.IO.MemoryStream ms = new System.IO.MemoryStream())
+                //{
+                //    BitmapEncoder encoder = new BmpBitmapEncoder();
+                //    encoder.Frames.Add(BitmapFrame.Create(bi));
+                //    encoder.Save(ms);
+                //    bitmap = new Bitmap(ms);
+                //}
+                FileStream fs = new FileStream(file.FileName, FileMode.Open);
+                byte[] bmpdata = new byte[fs.Length];
+                fs.Read(bmpdata, 0, bmpdata.Length);
+                fs.Close();
+            }
         }
 
         private void Histogram()

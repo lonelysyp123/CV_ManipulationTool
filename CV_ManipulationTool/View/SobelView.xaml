@@ -1,0 +1,37 @@
+﻿<Window x:Class="CV_ManipulationTool.View.SobelView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CV_ManipulationTool.View"
+        mc:Ignorable="d"
+        Title="SobelView" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Image Name="Map" Grid.Row="0" Grid.Column="0" Source="{Binding ImageSource}" Margin="5"></Image>
+        <Image Name="Map1" Grid.Row="1" Grid.Column="0" Source="{Binding ImageSource1}" Margin="5"></Image>
+        <Grid Grid.Row="1" Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Button Grid.Row="0" Grid.Column="0" Content="加载图像" Command="{Binding LoadImageCommand}" Margin="5"></Button>
+            <Button Grid.Row="0" Grid.Column="1" Content="转灰度图" Command="{Binding RGB2GrayCommand}" Margin="5"></Button>
+            <Button Grid.Row="1" Grid.Column="1" Content="高斯滤波" Command="{Binding FilterCommand}" Margin="5"></Button>
+            <Button Grid.Row="2" Grid.Column="1" Content="Sobel算子" Command="{Binding SobelCommand}" Margin="5"></Button>
+        </Grid>
+    </Grid>
+</Window>

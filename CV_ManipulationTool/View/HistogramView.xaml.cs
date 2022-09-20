@@ -26,6 +26,7 @@ namespace CV_ManipulationTool.View
         private Point RectStartPoint;
         private Point RectRunPoint;
         private Point RectStopPoint;
+        private Rect ROIRect = Rect.Empty;
 
         public HistogramView()
         {
@@ -37,30 +38,33 @@ namespace CV_ManipulationTool.View
 
         private void Simple_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            if (viewmodel.ImageSource != null)
+            if (ROIBtn.IsChecked != true)
             {
-                PlotView plotView = Chart;
-                Image image = Map;
-                Rectangle rectangle = ROI;
-
-                if (IsTrans)
+                if (viewmodel.ImageSource != null)
                 {
-                    Complex.Children.Clear();
-                    Simple.Children.Clear();
-                    Complex.Children.Add(plotView);
-                    Simple.Children.Add(image);
-                    Simple.Children.Add(rectangle);
-                }
-                else
-                {
-                    Complex.Children.Clear();
-                    Simple.Children.Clear();
-                    Complex.Children.Add(image);
-                    Complex.Children.Add(rectangle);
-                    Simple.Children.Add(plotView);
-                }
+                    PlotView plotView = Chart;
+                    Image image = Map;
+                    Rectangle rectangle = ROI;
 
-                IsTrans = !IsTrans;
+                    if (IsTrans)
+                    {
+                        Complex.Children.Clear();
+                        Simple.Children.Clear();
+                        Complex.Children.Add(plotView);
+                        Simple.Children.Add(image);
+                        Simple.Children.Add(rectangle);
+                    }
+                    else
+                    {
+                        Complex.Children.Clear();
+                        Simple.Children.Clear();
+                        Complex.Children.Add(image);
+                        Complex.Children.Add(rectangle);
+                        Simple.Children.Add(plotView);
+                    }
+
+                    IsTrans = !IsTrans;
+                }
             }
         }
 
@@ -115,7 +119,8 @@ namespace CV_ManipulationTool.View
                 //viewmodel.ImageInfo = "Rect  X:" + ImageX + " Y:" + ImageY + " Height:" + Height + " Width:" + Width;
 
                 //! 根据画的矩形去截图做直方图
-                viewmodel.GetROIHistogramHSV(new Rect(ImageX, ImageY, Width, Height));
+                ROIRect = new Rect(ImageX, ImageY, Width, Height);
+                viewmodel.GetROIHistogramHSV(ROIRect);
             }
         }
 
@@ -127,7 +132,28 @@ namespace CV_ManipulationTool.View
                 ROI.Margin = new Thickness(rect.Left, rect.Top, 0, 0);
                 ROI.Width = rect.Width;
                 ROI.Height = rect.Height;
+                ROIRect = Rect.Empty;
+                viewmodel.GetROIHistogramHSV(ROIRect);
             }
+        }
+
+        private void RBtn_Click(object sender, RoutedEventArgs e)
+        {
+            string name = (sender as RadioButton).Name;
+            if (name == "RBtn")
+            {
+                viewmodel.RGBIndex = 0;
+            }
+            else if (name == "GBtn")
+            {
+                viewmodel.RGBIndex = 1;
+            }
+            else if (name == "BBtn")
+            {
+                viewmodel.RGBIndex = 2;
+            }
+
+            viewmodel.GetROIHistogramHSV(ROIRect);
         }
     }
 }

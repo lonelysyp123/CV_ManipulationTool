@@ -45,6 +45,7 @@ namespace CV_ManipulationTool.ViewModel
         int[] Y = new int[256];
         List<int[]> RGB = new List<int[]>();
         private MatOptimization CvOperation = new MatOptimization();//opencvsharp的自定义操作
+        public int RGBIndex = 0;
 
         public HistogramViewModel()
         {
@@ -81,7 +82,7 @@ namespace CV_ManipulationTool.ViewModel
                 SrcImage = BitmapConverter.ToMat(bitmap);
 
                 RGB = Histogram(SrcImage);
-                InitChart(0);
+                InitChart(RGBIndex);
             }
         }
 
@@ -133,45 +134,29 @@ namespace CV_ManipulationTool.ViewModel
 
         public void GetROIHistogramHSV(System.Windows.Rect rect)
         {
-            Mat obj;
-            if (rect == System.Windows.Rect.Empty)
+            if (SrcImage != null)
             {
-                obj = SrcImage.Clone();
+                Mat obj;
+                if (rect == System.Windows.Rect.Empty || rect == null)
+                {
+                    obj = SrcImage.Clone();
+                }
+                else
+                {
+                    obj = CutImage(SrcImage, rect);
+                }
+
+                RGB = Histogram(obj);
+                LineSeries lineSeries = new LineSeries() { Title = "Histogram" };
+                for (int i = 0; i < Y.Length; i++)
+                {
+                    lineSeries.Points.Add(new DataPoint(Y[i], RGB[RGBIndex][i]));
+                }
+
+                LinePlotModel.Series.Clear();
+                LinePlotModel.Series.Add(lineSeries);
+                LinePlotModel.InvalidatePlot(true);
             }
-            else
-            {
-                obj = CutImage(null, rect);
-            }
-
-            RGB = Histogram(obj);
-
-            int Index = 0;
-            //if (IsSelectedEntityH)
-            //{
-            //    Index = 0;
-            //}
-            //else if (IsSelectedEntityS)
-            //{
-            //    Index = 1;
-            //}
-            //else if (IsSelectedEntityV)
-            //{
-            //    Index = 2;
-            //}
-            //else
-            //{
-            //    Index = 0;
-            //}
-
-            LineSeries lineSeries = new LineSeries() { Title = "Histogram" };
-            for (int i = 0; i < Y.Length; i++)
-            {
-                lineSeries.Points.Add(new DataPoint(Y[i], RGB[Index][i]));
-            }
-
-            LinePlotModel.Series.Clear();
-            LinePlotModel.Series.Add(lineSeries);
-            LinePlotModel.InvalidatePlot(true);
         }
 
         /// <summary>
@@ -187,10 +172,7 @@ namespace CV_ManipulationTool.ViewModel
             {
                 return CvOperation.CaptureImageByPosition(Image, CvRect);
             }
-            else
-            {
-                return CvOperation.CaptureImageByPosition(SrcImage, CvRect);
-            }
+            return null;
         }
     }
 }

@@ -115,15 +115,20 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Model\ImageModel.cs" />
+    <Compile Include="Tool\GDIHelper.cs" />
     <Compile Include="Tool\LogHelper.cs" />
     <Compile Include="ViewModel\AffineViewModel.cs" />
     <Compile Include="ViewModel\HistogramViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
+    <Compile Include="ViewModel\SobelViewModel.cs" />
     <Compile Include="View\AffineView.xaml.cs">
       <DependentUpon>AffineView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\HistogramView.xaml.cs">
       <DependentUpon>HistogramView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\SobelView.xaml.cs">
+      <DependentUpon>SobelView.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -142,6 +147,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\HistogramView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\SobelView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

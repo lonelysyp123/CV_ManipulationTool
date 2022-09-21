@@ -16,7 +16,7 @@ using System.Windows.Media.Imaging;
 
 namespace CV_ManipulationTool.ViewModel
 {
-    public class SobelViewModel : ObservableObject
+    public class CannyViewModel : ObservableObject
     {
         private BitmapSource _imageSource;
         public BitmapSource ImageSource
@@ -38,21 +38,58 @@ namespace CV_ManipulationTool.ViewModel
             }
         }
 
+        private int _thr1;
+        public int Thr1
+        {
+            get => _thr1;
+            set
+            {
+                SetProperty(ref _thr1, value);
+            }
+        }
+
+        private int _thr2;
+        public int Thr2
+        {
+            get => _thr2;
+            set
+            {
+                SetProperty(ref _thr2, value);
+            }
+        }
+
         public RelayCommand LoadImageCommand { get; set; }
+        public RelayCommand SaveImageCommand { get; set; }
         public RelayCommand RGB2GrayCommand { get; set; }
         public RelayCommand FilterCommand { get; set; }
         public RelayCommand SobelCommand { get; set; }
+        public RelayCommand CannyCommand { get; set; }
 
         private Mat SrcImage;
         InputArray SobelKernelX = InputArray.Create<float>(new float[3, 3] { { -1, 0, 1 }, { -2, 0, 2 }, { -1, 0, 1 } });
         InputArray SobelKernelY = InputArray.Create<float>(new float[3, 3] { { 1, 2, 1 }, { 0, 0, 0 }, { -1, -2, -1 } });
 
-        public SobelViewModel()
+        public CannyViewModel()
         {
             LoadImageCommand = new RelayCommand(LoadImage);
+            SaveImageCommand = new RelayCommand(SaveImage);
             RGB2GrayCommand = new RelayCommand(RGB2Gray);
             FilterCommand = new RelayCommand(Filter);
             SobelCommand = new RelayCommand(Sobel);
+            CannyCommand = new RelayCommand(Canny);
+        }
+
+        private void Canny()
+        {
+            Mat temp = new Mat();
+            Cv2.Canny(SrcImage, temp, Thr1, Thr2);
+            var hBitmap = temp.ToBitmap().GetHbitmap();
+            var bitmapSource = Imaging.CreateBitmapSourceFromHBitmap(
+                                hBitmap, IntPtr.Zero, Int32Rect.Empty,
+                                BitmapSizeOptions.FromEmptyOptions());
+            ImageSource = bitmapSource;
+            GDIHelper.DeleteObject(hBitmap);
+            SrcImage = temp;
         }
 
         private void Sobel()
@@ -95,6 +132,11 @@ namespace CV_ManipulationTool.ViewModel
                 GDIHelper.DeleteObject(hBitmap);
                 SrcImage = temp;
             }
+        }
+
+        private void SaveImage()
+        {
+            Cv2.ImWrite("./Resource/Image/canny.bmp", SrcImage);
         }
 
         private void LoadImage()

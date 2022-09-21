@@ -18,14 +18,14 @@ namespace CV_ManipulationTool.View
     /// <summary>
     /// SobelView.xaml 的交互逻辑
     /// </summary>
-    public partial class SobelView : Window
+    public partial class CannyView : Window
     {
-        SobelViewModel viewmodel;
-        public SobelView()
+        CannyViewModel viewmodel;
+        public CannyView()
         {
             InitializeComponent();
 
-            viewmodel = new SobelViewModel();
+            viewmodel = new CannyViewModel();
             this.DataContext = viewmodel;
         }
     }

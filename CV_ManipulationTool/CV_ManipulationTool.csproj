@@ -119,16 +119,20 @@
     <Compile Include="Tool\LogHelper.cs" />
     <Compile Include="ViewModel\AffineViewModel.cs" />
     <Compile Include="ViewModel\HistogramViewModel.cs" />
+    <Compile Include="ViewModel\HoughViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
-    <Compile Include="ViewModel\SobelViewModel.cs" />
+    <Compile Include="ViewModel\CannyViewModel.cs" />
     <Compile Include="View\AffineView.xaml.cs">
       <DependentUpon>AffineView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\HistogramView.xaml.cs">
       <DependentUpon>HistogramView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\SobelView.xaml.cs">
-      <DependentUpon>SobelView.xaml</DependentUpon>
+    <Compile Include="View\CannyView.xaml.cs">
+      <DependentUpon>CannyView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\HoughView.xaml.cs">
+      <DependentUpon>HoughView.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -150,7 +154,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\SobelView.xaml">
+    <Page Include="View\CannyView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\HoughView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

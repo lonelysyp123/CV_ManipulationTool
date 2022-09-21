@@ -16,19 +16,27 @@ namespace CV_ManipulationTool.ViewModel
         public RelayCommand AffineCommand { get; set; }
         public RelayCommand HistogramCommand { get; set; }
         public RelayCommand DemoCommand { get; set; }
-        public RelayCommand SobelCommand { get; set; }
+        public RelayCommand CannyCommand { get; set; }
+        public RelayCommand HoughCommand { get; set; }
 
         public MainViewModel()
         {
             AffineCommand = new RelayCommand(AffineFunc);
             HistogramCommand = new RelayCommand(Histogram);
             DemoCommand = new RelayCommand(Demo);
-            SobelCommand = new RelayCommand(Sobel);
+            CannyCommand = new RelayCommand(Canny);
+            HoughCommand = new RelayCommand(Hough);
         }
 
-        private void Sobel()
+        private void Hough()
         {
-            SobelView view = new SobelView();
+            HoughView view = new HoughView();
+            view.ShowDialog();
+        }
+
+        private void Canny()
+        {
+            CannyView view = new CannyView();
             view.ShowDialog();
         }
 

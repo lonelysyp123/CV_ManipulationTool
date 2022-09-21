@@ -1,4 +1,5 @@
 ﻿using CV_ManipulationTool.Model;
+using CV_ManipulationTool.Tool;
 using Microsoft.Toolkit.Mvvm.ComponentModel;
 using Microsoft.Toolkit.Mvvm.Input;
 using Microsoft.Win32;
@@ -12,6 +13,8 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Interop;
 using System.Windows.Media.Imaging;
 using TYVisuallibrary;
 
@@ -39,7 +42,18 @@ namespace CV_ManipulationTool.ViewModel
             }
         }
 
-        public IRelayCommand LoadImageCommand { get; set; }
+        private Visibility _isShowRGB;
+        public Visibility IsShowRGB
+        {
+            get => _isShowRGB;
+            set
+            {
+                SetProperty(ref _isShowRGB, value);
+            }
+        }
+
+        public RelayCommand LoadImageCommand { get; set; }
+        public RelayCommand RGB2GrayCommand { get; set; }
 
         private Mat SrcImage;
         int[] Y = new int[256];
@@ -50,12 +64,35 @@ namespace CV_ManipulationTool.ViewModel
         public HistogramViewModel()
         {
             LoadImageCommand = new RelayCommand(LoadImage);
+            RGB2GrayCommand = new RelayCommand(RGB2Gray);
 
             LinePlotModel = new PlotModel();
+            IsShowRGB = Visibility.Visible;
 
             for (int i = 0; i < 256; i++)
             {
                 Y[i] = i;
+            }
+        }
+
+        private void RGB2Gray()
+        {
+            if (SrcImage != null)
+            {
+                Mat temp = new Mat();
+                Cv2.CvtColor(SrcImage, temp, ColorConversionCodes.RGB2GRAY);
+
+                var hBitmap = temp.ToBitmap().GetHbitmap();
+                var bitmapSource = Imaging.CreateBitmapSourceFromHBitmap(
+                                    hBitmap, IntPtr.Zero, Int32Rect.Empty,
+                                    BitmapSizeOptions.FromEmptyOptions());
+                ImageSource = bitmapSource;
+                GDIHelper.DeleteObject(hBitmap);
+                SrcImage = temp;
+                IsShowRGB = Visibility.Hidden;
+                RGB = Histogram(SrcImage);
+                RGBIndex = 0;
+                InitChart(RGBIndex);
             }
         }
 
@@ -102,18 +139,25 @@ namespace CV_ManipulationTool.ViewModel
         private List<int[]> Histogram(Mat Input)
         {
             List<int[]> objs = new List<int[]>();
-            Mat matR = new Mat();
-            Mat matG = new Mat();
-            Mat matB = new Mat();
+            if (Input.Type() == MatType.CV_8UC1)
+            {
+                objs.Add(MatIntegration(Input));
+            }
+            else
+            {
+                Mat matR = new Mat();
+                Mat matG = new Mat();
+                Mat matB = new Mat();
 
-            //! 在HSV格式下，获取的单通道分别对应像素点的HSV值
-            Cv2.ExtractChannel(Input, matR, 0);
-            Cv2.ExtractChannel(Input, matG, 1);
-            Cv2.ExtractChannel(Input, matB, 2);
+                //! 在HSV格式下，获取的单通道分别对应像素点的HSV值
+                Cv2.ExtractChannel(Input, matR, 0);
+                Cv2.ExtractChannel(Input, matG, 1);
+                Cv2.ExtractChannel(Input, matB, 2);
 
-            objs.Add(MatIntegration(matR));
-            objs.Add(MatIntegration(matG));
-            objs.Add(MatIntegration(matB));
+                objs.Add(MatIntegration(matR));
+                objs.Add(MatIntegration(matG));
+                objs.Add(MatIntegration(matB));
+            }
 
             return objs;
         }
@@ -167,7 +211,7 @@ namespace CV_ManipulationTool.ViewModel
         /// <returns>裁剪后的图像资源</returns>
         public Mat CutImage(Mat Image, System.Windows.Rect rect)
         {
-            Rect CvRect = new Rect((int)rect.X, (int)rect.Y, (int)rect.Width, (int)rect.Height);
+            OpenCvSharp.Rect CvRect = new OpenCvSharp.Rect((int)rect.X, (int)rect.Y, (int)rect.Width, (int)rect.Height);
             if (Image != null)
             {
                 return CvOperation.CaptureImageByPosition(Image, CvRect);

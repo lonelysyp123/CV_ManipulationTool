@@ -102,9 +102,6 @@
     <Reference Include="System.Xaml">
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
     </Reference>
-    <Reference Include="TYVisuallibrary">
-      <HintPath>..\..\..\开浦科技\repos\ExternalQuality\ExternalQuality\bin\Debug\TYVisuallibrary.dll</HintPath>
-    </Reference>
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
@@ -114,14 +111,21 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Common\MatOptimization.cs" />
+    <Compile Include="Model\BinaryType.cs" />
+    <Compile Include="Model\ImageInfo.cs" />
     <Compile Include="Model\ImageModel.cs" />
+    <Compile Include="Model\QRCodePosition.cs" />
+    <Compile Include="Model\QRCodePositionB.cs" />
     <Compile Include="Tool\GDIHelper.cs" />
     <Compile Include="Tool\LogHelper.cs" />
     <Compile Include="ViewModel\AffineViewModel.cs" />
     <Compile Include="ViewModel\HistogramViewModel.cs" />
     <Compile Include="ViewModel\HoughViewModel.cs" />
+    <Compile Include="ViewModel\ImageDifferViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\CannyViewModel.cs" />
+    <Compile Include="ViewModel\PackColorViewModel.cs" />
     <Compile Include="View\AffineView.xaml.cs">
       <DependentUpon>AffineView.xaml</DependentUpon>
     </Compile>
@@ -133,6 +137,15 @@
     </Compile>
     <Compile Include="View\HoughView.xaml.cs">
       <DependentUpon>HoughView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ImageDifferView.xaml.cs">
+      <DependentUpon>ImageDifferView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ImageJoinView.xaml.cs">
+      <DependentUpon>ImageJoinView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\PackColorView.xaml.cs">
+      <DependentUpon>PackColorView.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -159,6 +172,18 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\HoughView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ImageDifferView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ImageJoinView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\PackColorView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -201,6 +226,7 @@
     <Content Include="Resource\Image\menu0.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Resource Include="Resource\Image\RightBottom.png" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resource\Image\menu.png">

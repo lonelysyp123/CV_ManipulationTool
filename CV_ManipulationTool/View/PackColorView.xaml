@@ -1,0 +1,75 @@
+﻿<Window x:Class="CV_ManipulationTool.View.PackColorView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CV_ManipulationTool.View"
+        mc:Ignorable="d"
+        Title="PackColorView" Height="450" Width="800" Closing="Window_Closing">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2.5*"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2.5*"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <Image x:Name="Img" Grid.Column="0" Grid.Row="0" Source="{Binding ImageSource}" Margin="5" MouseMove="Image_MouseMove"></Image>
+
+        <Grid Grid.Column="1" Grid.Row="0">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <Button Grid.Row="0" Content="加载图片" Margin="5" Command="{Binding LoadImageCommand}"></Button>
+
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Button Grid.Column="0" Margin="5" Content="开启鼠标监听" Command="{Binding OpenListenerCommand}"></Button>
+                <Button Grid.Column="1" Margin="5" Content="关闭鼠标监听" Command="{Binding CloseListenerCommand}"></Button>
+            </Grid>
+
+            <StackPanel Orientation="Horizontal" Grid.Row="2">
+                <Label VerticalAlignment="Center" FontSize="20">R:</Label>
+                <TextBox VerticalAlignment="Center" Width="100" FontSize="20" Text="{Binding RValue}"></TextBox>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Grid.Row="3">
+                <Label VerticalAlignment="Center" FontSize="20">G:</Label>
+                <TextBox VerticalAlignment="Center" Width="100" FontSize="20" Text="{Binding GValue}"></TextBox>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Grid.Row="4">
+                <Label VerticalAlignment="Center" FontSize="20">B:</Label>
+                <TextBox VerticalAlignment="Center" Width="100" FontSize="20" Text="{Binding BValue}"></TextBox>
+            </StackPanel>
+        </Grid>
+
+        <Grid Grid.Row="1" Grid.Column="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <StackPanel Orientation="Horizontal" Grid.Column="0" HorizontalAlignment="Center">
+                <Label VerticalAlignment="Center" FontSize="20">X:</Label>
+                <TextBox x:Name="AxisX" VerticalAlignment="Center" Width="100" FontSize="20" Text="{Binding XValue}"></TextBox>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Grid.Column="1" HorizontalAlignment="Center">
+                <Label VerticalAlignment="Center" FontSize="20">Y:</Label>
+                <TextBox x:Name="AxisY" VerticalAlignment="Center" Width="100" FontSize="20" Text="{Binding YValue}"></TextBox>
+            </StackPanel>
+        </Grid>
+
+        <Rectangle Grid.Row="1" Grid.Column="1" Margin="20" Fill="{Binding PackColor}"></Rectangle>
+    </Grid>
+</Window>

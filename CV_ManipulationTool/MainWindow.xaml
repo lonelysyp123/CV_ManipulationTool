@@ -30,9 +30,9 @@
             </Grid.RowDefinitions>
             <TextBlock Grid.Row="0" Text="图像处理" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="18"></TextBlock>
             <Button Grid.Row="1" Margin="7" Content="直方图" Command="{Binding HistogramCommand}"></Button>
-            <Button Grid.Row="2" Margin="7" Content="颜色提取" Command=""></Button>
-            <Button Grid.Row="3" Margin="7" Content="图像差" Command=""></Button>
-            <Button Grid.Row="4" Margin="7" Content="图像拼接" Command=""></Button>
+            <Button Grid.Row="2" Margin="7" Content="颜色提取" Command="{Binding PackColorCommand}"></Button>
+            <Button Grid.Row="3" Margin="7" Content="图像差" Command="{Binding ImageDifferCommand}"></Button>
+            <Button Grid.Row="4" Margin="7" Content="图像拼接" Command="{Binding ImageJoinCommand}"></Button>
             <Button Grid.Row="5" Margin="7" Content="Demo" Command="{Binding DemoCommand}"></Button>
         </Grid>
 
@@ -127,9 +127,9 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
             <TextBlock Grid.Row="0" Text="标定" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="18"></TextBlock>
-            <Button Grid.Row="1" Margin="7" Content="角点检测" Command=""></Button>
-            <Button Grid.Row="2" Margin="7" Content="边缘检测" Command=""></Button>
-            <Button Grid.Row="3" Margin="7" Content="霍夫变化" Command=""></Button>
+            <Button Grid.Row="1" Margin="7" Content="摄像头" Command=""></Button>
+            <Button Grid.Row="2" Margin="7" Content="坐标标定" Command=""></Button>
+            <Button Grid.Row="3" Margin="7" Content="相机标定" Command=""></Button>
         </Grid>
 
         <Grid Grid.Column="6">
@@ -143,10 +143,10 @@
                 <RowDefinition/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <TextBlock Grid.Row="0" Text="标定" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="18"></TextBlock>
-            <Button Grid.Row="1" Margin="7" Content="角点检测" Command=""></Button>
-            <Button Grid.Row="2" Margin="7" Content="边缘检测" Command=""></Button>
-            <Button Grid.Row="3" Margin="7" Content="霍夫变化" Command=""></Button>
+            <TextBlock Grid.Row="0" Text="识别" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="18"></TextBlock>
+            <Button Grid.Row="1" Margin="7" Content="OCR" Command=""></Button>
+            <Button Grid.Row="2" Margin="7" Content="车牌识别" Command=""></Button>
+            <Button Grid.Row="3" Margin="7" Content="二维码识别" Command=""></Button>
         </Grid>
     </Grid>
 </Window>

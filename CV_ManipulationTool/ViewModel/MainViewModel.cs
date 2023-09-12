@@ -18,6 +18,9 @@ namespace CV_ManipulationTool.ViewModel
         public RelayCommand DemoCommand { get; set; }
         public RelayCommand CannyCommand { get; set; }
         public RelayCommand HoughCommand { get; set; }
+        public RelayCommand PackColorCommand { get; set; }
+        public RelayCommand ImageDifferCommand { get; set; }
+        public RelayCommand ImageJoinCommand { get; set; }
 
         public MainViewModel()
         {
@@ -26,6 +29,27 @@ namespace CV_ManipulationTool.ViewModel
             DemoCommand = new RelayCommand(Demo);
             CannyCommand = new RelayCommand(Canny);
             HoughCommand = new RelayCommand(Hough);
+            PackColorCommand = new RelayCommand(PackColor);
+            ImageDifferCommand = new RelayCommand(ImageDiffer);
+            ImageJoinCommand = new RelayCommand(ImageJoin);
+        }
+
+        private void ImageJoin()
+        {
+            ImageJoinView view = new ImageJoinView();
+            view.ShowDialog();
+        }
+
+        private void ImageDiffer()
+        {
+            ImageDifferView view = new ImageDifferView();
+            view.ShowDialog();
+        }
+
+        private void PackColor()
+        {
+            PackColorView view = new PackColorView();
+            view.ShowDialog();
         }
 
         private void Hough()

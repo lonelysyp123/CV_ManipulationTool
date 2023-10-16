@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CV_ManipulationTool.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,9 +20,14 @@ namespace CV_ManipulationTool.View
     /// </summary>
     public partial class ImageJoinView : Window
     {
+        ImageJoinViewModel viewmodel;
+
         public ImageJoinView()
         {
             InitializeComponent();
+
+            viewmodel = new ImageJoinViewModel();
+            this.DataContext = viewmodel;
         }
     }
 }

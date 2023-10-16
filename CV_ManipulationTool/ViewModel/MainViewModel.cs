@@ -4,23 +4,28 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CV_ManipulationTool.Common;
 using CV_ManipulationTool.View;
 using Microsoft.Toolkit.Mvvm.ComponentModel;
 using Microsoft.Toolkit.Mvvm.Input;
 using Microsoft.Win32;
+using OpenCvSharp;
 
 namespace CV_ManipulationTool.ViewModel
 {
     public class MainViewModel : ObservableObject
     {
-        public RelayCommand AffineCommand { get; set; }
-        public RelayCommand HistogramCommand { get; set; }
-        public RelayCommand DemoCommand { get; set; }
-        public RelayCommand CannyCommand { get; set; }
-        public RelayCommand HoughCommand { get; set; }
-        public RelayCommand PackColorCommand { get; set; }
-        public RelayCommand ImageDifferCommand { get; set; }
-        public RelayCommand ImageJoinCommand { get; set; }
+        public RelayCommand AffineCommand { get; private set; }
+        public RelayCommand HistogramCommand { get; private set; }
+        public RelayCommand DemoCommand { get; private set; }
+        public RelayCommand CannyCommand { get; private set; }
+        public RelayCommand HoughCommand { get; private set; }
+        public RelayCommand PackColorCommand { get; private set; }
+        public RelayCommand ImageDifferCommand { get; private set; }
+        public RelayCommand ImageJoinCommand { get; private set; }
+        public RelayCommand GrayImageEqualizationCommand { get; private set; }
+        public RelayCommand OnCameraCommand { get; private set; }
+        public RelayCommand GrayImageThresholdCommand { get; private set; }
 
         public MainViewModel()
         {
@@ -32,6 +37,27 @@ namespace CV_ManipulationTool.ViewModel
             PackColorCommand = new RelayCommand(PackColor);
             ImageDifferCommand = new RelayCommand(ImageDiffer);
             ImageJoinCommand = new RelayCommand(ImageJoin);
+            GrayImageEqualizationCommand = new RelayCommand(GrayImageEqualization);
+            OnCameraCommand = new RelayCommand(OnCamera);
+            GrayImageThresholdCommand = new RelayCommand(GrayImageThreshold);
+        }
+
+        private void GrayImageThreshold()
+        {
+            GrayImageThresholdView view = new GrayImageThresholdView();
+            view.ShowDialog();
+        }
+
+        private void OnCamera()
+        {
+            CameraView view = new CameraView();
+            view.ShowDialog();
+        }
+
+        private void GrayImageEqualization()
+        {
+            GrayEqualizationView view = new GrayEqualizationView();
+            view.ShowDialog();
         }
 
         private void ImageJoin()

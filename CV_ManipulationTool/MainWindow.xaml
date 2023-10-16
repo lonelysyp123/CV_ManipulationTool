@@ -33,7 +33,7 @@
             <Button Grid.Row="2" Margin="7" Content="颜色提取" Command="{Binding PackColorCommand}"></Button>
             <Button Grid.Row="3" Margin="7" Content="图像差" Command="{Binding ImageDifferCommand}"></Button>
             <Button Grid.Row="4" Margin="7" Content="图像拼接" Command="{Binding ImageJoinCommand}"></Button>
-            <Button Grid.Row="5" Margin="7" Content="Demo" Command="{Binding DemoCommand}"></Button>
+            <!--<Button Grid.Row="5" Margin="7" Content="Demo" Command="{Binding DemoCommand}"></Button>-->
         </Grid>
 
         <Grid Grid.Column="1">
@@ -48,8 +48,8 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
             <TextBlock Grid.Row="0" Text="预处理" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="18"></TextBlock>
-            <Button Grid.Row="1" Margin="7" Content="均衡化" Command=""></Button>
-            <Button Grid.Row="2" Margin="7" Content="阈值处理" Command=""></Button>
+            <Button Grid.Row="1" Margin="7" Content="均衡化" Command="{Binding GrayImageEqualizationCommand}"></Button>
+            <Button Grid.Row="2" Margin="7" Content="阈值处理" Command="{Binding GrayImageThresholdCommand}"></Button>
             <Button Grid.Row="3" Margin="7" Content="滤波" Command=""></Button>
             <Button Grid.Row="4" Margin="7" Content="形态学运算" Command=""></Button>
             <Button Grid.Row="5" Margin="7" Content="ROI" Command=""></Button>
@@ -127,7 +127,7 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
             <TextBlock Grid.Row="0" Text="标定" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="18"></TextBlock>
-            <Button Grid.Row="1" Margin="7" Content="摄像头" Command=""></Button>
+            <Button Grid.Row="1" Margin="7" Content="摄像头" Command="{Binding OnCameraCommand}"></Button>
             <Button Grid.Row="2" Margin="7" Content="坐标标定" Command=""></Button>
             <Button Grid.Row="3" Margin="7" Content="相机标定" Command=""></Button>
         </Grid>

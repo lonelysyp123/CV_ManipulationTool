@@ -79,6 +79,7 @@
     <Reference Include="System.Drawing.Common, Version=4.0.0.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Drawing.Common.5.0.3\lib\net461\System.Drawing.Common.dll</HintPath>
     </Reference>
+    <Reference Include="System.Management" />
     <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Memory.4.5.4\lib\net461\System.Memory.dll</HintPath>
     </Reference>
@@ -112,7 +113,9 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Common\MatOptimization.cs" />
+    <Compile Include="Common\Win32_Api_Helper.cs" />
     <Compile Include="Model\BinaryType.cs" />
+    <Compile Include="Model\EnumDevices.cs" />
     <Compile Include="Model\ImageInfo.cs" />
     <Compile Include="Model\ImageModel.cs" />
     <Compile Include="Model\QRCodePosition.cs" />
@@ -120,14 +123,27 @@
     <Compile Include="Tool\GDIHelper.cs" />
     <Compile Include="Tool\LogHelper.cs" />
     <Compile Include="ViewModel\AffineViewModel.cs" />
+    <Compile Include="ViewModel\CameraViewModel.cs" />
+    <Compile Include="ViewModel\GrayEqualizationViewModel.cs" />
+    <Compile Include="ViewModel\GrayImageThresholdViewModel.cs" />
     <Compile Include="ViewModel\HistogramViewModel.cs" />
     <Compile Include="ViewModel\HoughViewModel.cs" />
     <Compile Include="ViewModel\ImageDifferViewModel.cs" />
+    <Compile Include="ViewModel\ImageJoinViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\CannyViewModel.cs" />
     <Compile Include="ViewModel\PackColorViewModel.cs" />
     <Compile Include="View\AffineView.xaml.cs">
       <DependentUpon>AffineView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\CameraView.xaml.cs">
+      <DependentUpon>CameraView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\GrayEqualizationView.xaml.cs">
+      <DependentUpon>GrayEqualizationView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\GrayImageThresholdView.xaml.cs">
+      <DependentUpon>GrayImageThresholdView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\HistogramView.xaml.cs">
       <DependentUpon>HistogramView.xaml</DependentUpon>
@@ -160,6 +176,18 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="View\AffineView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\CameraView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\GrayEqualizationView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\GrayImageThresholdView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -220,6 +248,9 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <Content Include="Resource\haarcascade_frontalface_alt.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Resource\Image\lena_color_256.tif">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

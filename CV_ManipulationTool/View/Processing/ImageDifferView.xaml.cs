@@ -13,18 +13,19 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace CV_ManipulationTool.View
+namespace CV_ManipulationTool.View.Processing
 {
     /// <summary>
-    /// GrayImageThresholdView.xaml 的交互逻辑
+    /// ImageDifferView.xaml 的交互逻辑
     /// </summary>
-    public partial class GrayImageThresholdView : Window
+    public partial class ImageDifferView : Window
     {
-        GrayImageThresholdViewModel viewmodel;
-        public GrayImageThresholdView()
+        ImageDifferViewModel viewmodel;
+        public ImageDifferView()
         {
             InitializeComponent();
-            viewmodel = new GrayImageThresholdViewModel();
+
+            viewmodel = new ImageDifferViewModel();
             this.DataContext = viewmodel;
         }
     }

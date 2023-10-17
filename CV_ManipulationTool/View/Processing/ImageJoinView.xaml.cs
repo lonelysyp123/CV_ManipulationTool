@@ -13,18 +13,20 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace CV_ManipulationTool.View
+namespace CV_ManipulationTool.View.Processing
 {
     /// <summary>
-    /// GrayEqualizationView.xaml 的交互逻辑
+    /// ImageJoinView.xaml 的交互逻辑
     /// </summary>
-    public partial class GrayEqualizationView : Window
+    public partial class ImageJoinView : Window
     {
-        GrayEqualizationViewModel viewmodel;
-        public GrayEqualizationView()
+        ImageJoinViewModel viewmodel;
+
+        public ImageJoinView()
         {
             InitializeComponent();
-            viewmodel = new GrayEqualizationViewModel();
+
+            viewmodel = new ImageJoinViewModel();
             this.DataContext = viewmodel;
         }
     }

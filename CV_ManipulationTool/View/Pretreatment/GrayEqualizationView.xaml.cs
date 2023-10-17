@@ -13,19 +13,18 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace CV_ManipulationTool.View
+namespace CV_ManipulationTool.View.Pretreatment
 {
     /// <summary>
-    /// SobelView.xaml 的交互逻辑
+    /// GrayEqualizationView.xaml 的交互逻辑
     /// </summary>
-    public partial class CannyView : Window
+    public partial class GrayEqualizationView : Window
     {
-        CannyViewModel viewmodel;
-        public CannyView()
+        GrayEqualizationViewModel viewmodel;
+        public GrayEqualizationView()
         {
             InitializeComponent();
-
-            viewmodel = new CannyViewModel();
+            viewmodel = new GrayEqualizationViewModel();
             this.DataContext = viewmodel;
         }
     }

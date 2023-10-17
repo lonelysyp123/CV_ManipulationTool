@@ -13,20 +13,19 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace CV_ManipulationTool.View
+namespace CV_ManipulationTool.View.Detection
 {
     /// <summary>
-    /// ImageJoinView.xaml 的交互逻辑
+    /// HoughView.xaml 的交互逻辑
     /// </summary>
-    public partial class ImageJoinView : Window
+    public partial class HoughView : Window
     {
-        ImageJoinViewModel viewmodel;
-
-        public ImageJoinView()
+        HoughViewModel viewmodel;
+        public HoughView()
         {
             InitializeComponent();
 
-            viewmodel = new ImageJoinViewModel();
+            viewmodel = new HoughViewModel();
             this.DataContext = viewmodel;
         }
     }

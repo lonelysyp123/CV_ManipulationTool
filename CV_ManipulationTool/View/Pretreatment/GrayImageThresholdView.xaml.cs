@@ -13,31 +13,19 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace CV_ManipulationTool.View
+namespace CV_ManipulationTool.View.Pretreatment
 {
     /// <summary>
-    /// CameraView.xaml 的交互逻辑
+    /// GrayImageThresholdView.xaml 的交互逻辑
     /// </summary>
-    public partial class CameraView : Window
+    public partial class GrayImageThresholdView : Window
     {
-        CameraViewModel viewmodel;
-
-        public CameraView()
+        GrayImageThresholdViewModel viewmodel;
+        public GrayImageThresholdView()
         {
             InitializeComponent();
-            viewmodel = new CameraViewModel();
+            viewmodel = new GrayImageThresholdViewModel();
             this.DataContext = viewmodel;
-        }
-
-        private void Window_Closed(object sender, EventArgs e)
-        {
-            if (viewmodel != null)
-            {
-                if (viewmodel.m_CameraOpen_flag)
-                {
-                    viewmodel.CloseCameraCommand.Execute(null);
-                }
-            }
         }
     }
 }

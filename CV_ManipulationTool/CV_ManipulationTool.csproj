@@ -133,34 +133,37 @@
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\CannyViewModel.cs" />
     <Compile Include="ViewModel\PackColorViewModel.cs" />
-    <Compile Include="View\AffineView.xaml.cs">
+    <Compile Include="View\Pretreatment\GrayImageFilterView.xaml.cs">
+      <DependentUpon>GrayImageFilterView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Transformation\AffineView.xaml.cs">
       <DependentUpon>AffineView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\CameraView.xaml.cs">
+    <Compile Include="View\Calibration\CameraView.xaml.cs">
       <DependentUpon>CameraView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\GrayEqualizationView.xaml.cs">
+    <Compile Include="View\Pretreatment\GrayEqualizationView.xaml.cs">
       <DependentUpon>GrayEqualizationView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\GrayImageThresholdView.xaml.cs">
+    <Compile Include="View\Pretreatment\GrayImageThresholdView.xaml.cs">
       <DependentUpon>GrayImageThresholdView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\HistogramView.xaml.cs">
+    <Compile Include="View\Processing\HistogramView.xaml.cs">
       <DependentUpon>HistogramView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\CannyView.xaml.cs">
+    <Compile Include="View\Detection\CannyView.xaml.cs">
       <DependentUpon>CannyView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\HoughView.xaml.cs">
+    <Compile Include="View\Detection\HoughView.xaml.cs">
       <DependentUpon>HoughView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\ImageDifferView.xaml.cs">
+    <Compile Include="View\Processing\ImageDifferView.xaml.cs">
       <DependentUpon>ImageDifferView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\ImageJoinView.xaml.cs">
+    <Compile Include="View\Processing\ImageJoinView.xaml.cs">
       <DependentUpon>ImageJoinView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\PackColorView.xaml.cs">
+    <Compile Include="View\Processing\PackColorView.xaml.cs">
       <DependentUpon>PackColorView.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
@@ -175,43 +178,47 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="View\AffineView.xaml">
+    <Page Include="View\Pretreatment\GrayImageFilterView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\CameraView.xaml">
+    <Page Include="View\Transformation\AffineView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\GrayEqualizationView.xaml">
+    <Page Include="View\Calibration\CameraView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\GrayImageThresholdView.xaml">
+    <Page Include="View\Pretreatment\GrayEqualizationView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\HistogramView.xaml">
+    <Page Include="View\Pretreatment\GrayImageThresholdView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\CannyView.xaml">
+    <Page Include="View\Processing\HistogramView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\HoughView.xaml">
+    <Page Include="View\Detection\CannyView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\ImageDifferView.xaml">
+    <Page Include="View\Detection\HoughView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\ImageJoinView.xaml">
+    <Page Include="View\Processing\ImageDifferView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\PackColorView.xaml">
+    <Page Include="View\Processing\ImageJoinView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Processing\PackColorView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -246,7 +253,10 @@
   <ItemGroup>
     <Resource Include="Icon.ico" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="View\Identify\" />
+    <Folder Include="View\Position\" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="Resource\haarcascade_frontalface_alt.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

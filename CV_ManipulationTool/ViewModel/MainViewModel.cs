@@ -6,6 +6,11 @@ using System.Text;
 using System.Threading.Tasks;
 using CV_ManipulationTool.Common;
 using CV_ManipulationTool.View;
+using CV_ManipulationTool.View.Calibration;
+using CV_ManipulationTool.View.Detection;
+using CV_ManipulationTool.View.Pretreatment;
+using CV_ManipulationTool.View.Processing;
+using CV_ManipulationTool.View.Transformation;
 using Microsoft.Toolkit.Mvvm.ComponentModel;
 using Microsoft.Toolkit.Mvvm.Input;
 using Microsoft.Win32;
@@ -26,6 +31,7 @@ namespace CV_ManipulationTool.ViewModel
         public RelayCommand GrayImageEqualizationCommand { get; private set; }
         public RelayCommand OnCameraCommand { get; private set; }
         public RelayCommand GrayImageThresholdCommand { get; private set; }
+        public RelayCommand GrayImageFilterCommand { get; private set; }
 
         public MainViewModel()
         {
@@ -40,6 +46,13 @@ namespace CV_ManipulationTool.ViewModel
             GrayImageEqualizationCommand = new RelayCommand(GrayImageEqualization);
             OnCameraCommand = new RelayCommand(OnCamera);
             GrayImageThresholdCommand = new RelayCommand(GrayImageThreshold);
+            GrayImageFilterCommand = new RelayCommand(GrayImageFilter);
+        }
+
+        private void GrayImageFilter()
+        {
+            GrayImageFilterView view = new GrayImageFilterView();
+            view.ShowDialog();
         }
 
         private void GrayImageThreshold()

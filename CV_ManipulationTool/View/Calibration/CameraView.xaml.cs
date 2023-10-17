@@ -13,20 +13,31 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace CV_ManipulationTool.View
+namespace CV_ManipulationTool.View.Calibration
 {
     /// <summary>
-    /// HoughView.xaml 的交互逻辑
+    /// CameraView.xaml 的交互逻辑
     /// </summary>
-    public partial class HoughView : Window
+    public partial class CameraView : Window
     {
-        HoughViewModel viewmodel;
-        public HoughView()
+        CameraViewModel viewmodel;
+
+        public CameraView()
         {
             InitializeComponent();
-
-            viewmodel = new HoughViewModel();
+            viewmodel = new CameraViewModel();
             this.DataContext = viewmodel;
+        }
+
+        private void Window_Closed(object sender, EventArgs e)
+        {
+            if (viewmodel != null)
+            {
+                if (viewmodel.m_CameraOpen_flag)
+                {
+                    viewmodel.CloseCameraCommand.Execute(null);
+                }
+            }
         }
     }
 }

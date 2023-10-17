@@ -13,19 +13,18 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace CV_ManipulationTool.View
+namespace CV_ManipulationTool.View.Pretreatment
 {
     /// <summary>
-    /// ImageDifferView.xaml 的交互逻辑
+    /// GrayImageFilterView.xaml 的交互逻辑
     /// </summary>
-    public partial class ImageDifferView : Window
+    public partial class GrayImageFilterView : Window
     {
-        ImageDifferViewModel viewmodel;
-        public ImageDifferView()
+        GrayImageFilterViewModel viewmodel;
+        public GrayImageFilterView()
         {
             InitializeComponent();
-
-            viewmodel = new ImageDifferViewModel();
+            viewmodel = new GrayImageFilterViewModel();
             this.DataContext = viewmodel;
         }
     }
